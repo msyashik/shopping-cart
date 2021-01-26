@@ -29,19 +29,20 @@
 
                 <div class="col-md-5 center-item">
                   <div class="input-group number-spinner">
-                    <button class="btn btn-default">
+                    <button id="iPhoneMinus" class="btn btn-default">
                       <i class="fas fa-minus"></i>
                     </button>
                     <input
+                      id="iPhone"
                       type="text"
                       class="form-control text-center"
                       value="1"
                     />
-                    <button class="btn btn-default">
+                    <button id="iPhonePlus" class="btn btn-default">
                       <i class="fas fa-plus"></i>
                     </button>
                   </div>
-                  <h5>$1219</h5>
+                  <h5>$ <span id="iPhonePrice">1219</span></h5>
                   <img src="images/remove.png" alt="" class="remove-item" />
                 </div>
               </div>
@@ -97,5 +98,28 @@
         </div>
       </div>
     </section>
+    <script>
+      //plus area
+      var iPhonePlus = document.getElementById("iPhonePlus");
+      iPhonePlus.addEventListener("click", function () {
+        var iPhonePlus = document.getElementById("iPhone").value;
+        var iPhoneNumberPlus = parseFloat(iPhonePlus);
+        var newIPhoneNumberPlus = iPhoneNumberPlus + 1;
+        var newIPhonePricePlus = newIPhoneNumberPlus * 1219;
+        document.getElementById("iPhone").value = newIPhoneNumberPlus;
+        document.getElementById("iPhonePrice").innerText = newIPhonePricePlus;
+      });
+
+      //minus area
+      var iPhoneMinus = document.getElementById("iPhoneMinus");
+      iPhoneMinus.addEventListener("click", function () {
+        var iPhoneMinus = document.getElementById("iPhone").value;
+        var iPhoneNumberMinus = parseFloat(iPhoneMinus);
+        var newIPhoneNumberMinus = iPhoneNumberMinus - 1;
+        var newIPhonePriceMinus = newIPhoneNumberMinus * 1219;
+        document.getElementById("iPhone").value = newIPhoneNumberMinus;
+        document.getElementById("iPhonePrice").innerText = newIPhonePriceMinus;
+      });
+    </script>
   </body>
 </html>
