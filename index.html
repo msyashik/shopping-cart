@@ -84,9 +84,9 @@
                 </div>
 
                 <div class="col-md-4 status">
-                  <h5>$1,278</h5>
-                  <h5>$0</h5>
-                  <h5>$1,278</h5>
+                  <h5>$ <span id="subtotal">1278</span></h5>
+                  <h5>$ 0</h5>
+                  <h5>$ <span id="total">1278</span></h5>
                 </div>
               </div>
             </div>
@@ -107,14 +107,26 @@
       const iPhonePlus = document.getElementById("iPhonePlus");
       iPhonePlus.addEventListener("click", function () {
         const newIPhoneNumber = parseNumber("iPhone", 1);
-        updateValue(newIPhoneNumber, iPhoneBasePrice, "iPhone", "iPhonePrice");
+        updateValue(
+          newIPhoneNumber,
+          iPhoneBasePrice,
+          "iPhone",
+          "iPhonePrice",
+          "iPhoneCasePrice"
+        );
       });
 
       //minus area iPhone
       const iPhoneMinus = document.getElementById("iPhoneMinus");
       iPhoneMinus.addEventListener("click", function () {
         const newIPhoneNumber = parseNumber("iPhone", -1);
-        updateValue(newIPhoneNumber, iPhoneBasePrice, "iPhone", "iPhonePrice");
+        updateValue(
+          newIPhoneNumber,
+          iPhoneBasePrice,
+          "iPhone",
+          "iPhonePrice",
+          "iPhoneCasePrice"
+        );
       });
 
       //plus area iPhoneCase
@@ -125,7 +137,8 @@
           newIPhoneCaseNumber,
           iPhoneCaseBasePrice,
           "iPhoneCase",
-          "iPhoneCasePrice"
+          "iPhoneCasePrice",
+          "iPhonePrice"
         );
       });
 
@@ -137,7 +150,8 @@
           newIPhoneCaseNumber,
           iPhoneCaseBasePrice,
           "iPhoneCase",
-          "iPhoneCasePrice"
+          "iPhoneCasePrice",
+          "iPhonePrice"
         );
       });
 
@@ -149,11 +163,15 @@
         return curIPhone;
       }
 
-      //value updating area
-      function updateValue(newNumber, price, id1, id2) {
+      //value updating function
+      function updateValue(newNumber, price, id1, id2, id3) {
         const newNumberPrice = newNumber * price;
         document.getElementById(id1).value = newNumber;
         document.getElementById(id2).innerText = newNumberPrice;
+        document.getElementById("subtotal").innerText =
+          parseFloat(document.getElementById(id3).innerText) + newNumberPrice;
+        document.getElementById("total").innerText =
+          parseFloat(document.getElementById(id3).innerText) + newNumberPrice;
       }
     </script>
   </body>
